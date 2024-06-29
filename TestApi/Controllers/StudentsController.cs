@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TestApi.Models;
-using TestApi.Models.Enum;
 using TestApi.Services;
 
 namespace TestApi.Controllers
@@ -10,17 +8,17 @@ namespace TestApi.Controllers
     [ApiController]
     public class StudentsController : ControllerBase
     {
-        private readonly StudentService _studentService;
+        private readonly IstudentService _istudentService;
 
-        public StudentsController() 
+        public StudentsController(IstudentService istudentService) 
         {
-            _studentService = new StudentService();
+            _istudentService = istudentService;
         }
 
         [HttpGet("{id?}")]
         public IActionResult GetAllStudent(int? id)
         {
-            var student = _studentService.GetStudents();
+            var student = _istudentService.GetStudents();
 
             if (id != null)
             {

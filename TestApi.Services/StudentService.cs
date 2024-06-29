@@ -3,7 +3,7 @@ using TestApi.Models;
 
 namespace TestApi.Services
 {
-    public class StudentService
+    public class StudentService : IstudentService
     {
         public List<Student> GetStudents()
         {
