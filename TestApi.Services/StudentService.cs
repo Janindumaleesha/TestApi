@@ -13,7 +13,7 @@ namespace TestApi.Services
             {
                 Id = 1,
                 FirstName = "Janindu",
-                LastName = "Maleesha",
+                LastName = "Ariyasinghe",
                 Address = "57/K Haggalla, Ellakkala.",
                 City = "Nittambuwa",
                 IsDeleted = DeleteStatus.INPROGRESS
