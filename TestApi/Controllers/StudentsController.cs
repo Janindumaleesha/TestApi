@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TestApi.Services;
+using TestApi.Services.Students;
 
 namespace TestApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/students")]
     [ApiController]
     public class StudentsController : ControllerBase
     {
@@ -15,18 +15,26 @@ namespace TestApi.Controllers
             _istudentService = istudentService;
         }
 
-        [HttpGet("{id?}")]
-        public IActionResult GetAllStudent(int? id)
+        [HttpGet]
+        public IActionResult GetAllStudent()
         {
-            var student = _istudentService.GetStudents();
+            var students = _istudentService.GetStudents();
 
-            if (id != null)
+            if (students == null)
             {
-                student.FirstOrDefault(x => x.Id == id);
+                return NotFound();
             }
-            else
+            return Ok(students);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetStudent(int id)
+        {
+            var student = _istudentService.GetStudent(id);
+
+            if (student == null)
             {
-                student.ToList();
+                return NotFound();
             }
             return Ok(student);
         }

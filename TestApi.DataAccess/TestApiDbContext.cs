@@ -11,6 +11,7 @@ namespace TestApi.DataAccess
 {
     public class TestApiDbContext : DbContext
     {
+        public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Student> Students { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -21,14 +22,62 @@ namespace TestApi.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Student>().HasData(new Student
+            modelBuilder.Entity<Teacher>().HasData(new Teacher[]
             {
-                Id = 1,
-                FirstName = "Janindu",
-                LastName = "Maleesha",
-                Address = "57/K Haggalla, Ellakkala.",
-                City = "Nittambuwa",
-                IsDeleted = DeleteStatus.INPROGRESS
+                new Teacher
+                {
+                    Id = 1,
+                    FullName = "Ramya"
+                },
+                new Teacher
+                {
+                    Id = 2,
+                    FullName = "Kalyani"
+                },
+                new Teacher
+                {
+                    Id = 3,
+                    FullName = "Samanthi Kumari"
+                },
+                new Teacher
+                {
+                    Id = 4,
+                    FullName = "Stela Rajasekara"
+                }
+            });
+
+            modelBuilder.Entity<Student>().HasData(new Student[]
+            {
+                new Student
+                {
+                    Id = 2,
+                    FirstName = "Ravindu",
+                    LastName = "Himansha",
+                    Address = "57/K Pinnagolla, Ellakkala.",
+                    City = "Nittambuwa",
+                    IsDeleted = DeleteStatus.INPROGRESS,
+                    TeacherId = 1
+                },
+                new Student
+                {
+                    Id = 3,
+                    FirstName = "Hirusha",
+                    LastName = "Dilshan",
+                    Address = "57/K Haggalla, Pinnagolla.",
+                    City = "Nittambuwa",
+                    IsDeleted = DeleteStatus.INPROGRESS,
+                    TeacherId = 1
+                },
+                new Student
+                {
+                    Id = 4,
+                    FirstName = "Tharindu",
+                    LastName = "Harshana",
+                    Address = "57/K Kottawa, Ellakkala.",
+                    City = "Kottawa",
+                    IsDeleted = DeleteStatus.INPROGRESS,
+                    TeacherId = 3
+                },
             });
         }
     }

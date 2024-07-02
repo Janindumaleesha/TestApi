@@ -1,10 +1,15 @@
 ﻿using TestApi.Models.Enum;
 using TestApi.Models;
 
-namespace TestApi.Services
+namespace TestApi.Services.Students
 {
     public class StudentService : IstudentService
     {
+        public Student GetStudent(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Student> GetStudents()
         {
             var students = new List<Student>();

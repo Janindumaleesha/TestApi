@@ -12,5 +12,8 @@ namespace TestApi.Models
         public string Address { get; set; }
         public string City { get; set; }
         public DeleteStatus IsDeleted { get; set; }
+
+        public int TeacherId { get; set; }
+        public Teacher Teacher { get; set; }
     }
 }
