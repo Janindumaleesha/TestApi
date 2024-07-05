@@ -27,22 +27,34 @@ namespace TestApi.DataAccess
                 new Teacher
                 {
                     Id = 1,
-                    FullName = "Ramya"
+                    FullName = "Ramya",
+                    AddressNo = "56",
+                    Street = "Yakkala road",
+                    City = "Gampaha"
                 },
                 new Teacher
                 {
                     Id = 2,
-                    FullName = "Kalyani"
+                    FullName = "Kalyani",
+                    AddressNo = "45",
+                    Street = "Haowalla road",
+                    City = "Haowalla"
                 },
                 new Teacher
                 {
                     Id = 3,
-                    FullName = "Samanthi Kumari"
+                    FullName = "Samanthi Kumari",
+                    AddressNo = "21",
+                    Street = "Radawana road",
+                    City = "Kirindiwala"
                 },
                 new Teacher
                 {
                     Id = 4,
-                    FullName = "Stela Rajasekara"
+                    FullName = "Stela Rajasekara",
+                    AddressNo = "65",
+                    Street = "Waliweriya road",
+                    City = "Gampaha"
                 }
             });
 

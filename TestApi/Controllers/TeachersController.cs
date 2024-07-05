@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TestApi.Models;
 using TestApi.Services.Teachers;
+using TestApi.Services.ViewModels;
 
 namespace TestApi.Controllers
 {
@@ -9,21 +12,38 @@ namespace TestApi.Controllers
     public class TeachersController : ControllerBase
     {
         private readonly ITeacherService _service;
-        public TeachersController(ITeacherService teacherService)
+        private readonly IMapper _mapper;
+
+        public TeachersController(ITeacherService teacherService, IMapper mapper)
         {
             _service = teacherService;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public IActionResult GetTeachers()
+        public ActionResult<ICollection<TeacherViewModel>> GetTeachers()
         {
             var getTeachers = _service.GetAllTeacher();
+            //var getTeachersView = new List<TeacherViewModel>();
 
             if (getTeachers == null)
             {
                 return NotFound();
             }
-            return Ok(getTeachers);
+
+            var mapperTeachers = _mapper.Map<ICollection<TeacherViewModel>>(getTeachers);
+
+            /*foreach (var item in getTeachers)
+            {
+                getTeachersView.Add(new TeacherViewModel 
+                {
+                    Id = item.Id,
+                    FullName = item.FullName,
+                    Address = $"{item.AddressNo}, {item.Street}, {item.City}"
+                });
+            }*/
+
+            return Ok(mapperTeachers);
         }
 
         [HttpGet("{id}")]
@@ -35,6 +55,8 @@ namespace TestApi.Controllers
             {
                 return NotFound();
             }
+
+            var mapperTeacher = _mapper.Map<TeacherViewModel>(teacher);
             return Ok(teacher);
         }
     }

@@ -5,12 +5,12 @@ namespace TestApi.Services.Students
 {
     public class StudentService : IstudentService
     {
-        public Student GetStudent(int id)
+        public Student GetStudent(int teacherId, int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Student> GetStudents()
+        public List<Student> GetStudents(int teacherId)
         {
             var students = new List<Student>();
 

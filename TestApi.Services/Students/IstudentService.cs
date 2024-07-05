@@ -9,7 +9,7 @@ namespace TestApi.Services.Students
 {
     public interface IstudentService
     {
-        public List<Student> GetStudents();
-        public Student GetStudent(int id);
+        public List<Student> GetStudents(int teacherId);
+        public Student GetStudent(int teacherId, int id);
     }
 }
